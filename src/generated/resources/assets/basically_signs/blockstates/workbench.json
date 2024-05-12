@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=east": {
+      "model": "basically_signs:block/workbench",
+      "y": 180
+    },
+    "facing=north": {
+      "model": "basically_signs:block/workbench",
+      "y": 90
+    },
+    "facing=south": {
+      "model": "basically_signs:block/workbench",
+      "y": 270
+    },
+    "facing=west": {
+      "model": "basically_signs:block/workbench"
+    }
+  }
+}
