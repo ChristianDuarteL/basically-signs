@@ -44,6 +44,20 @@ public enum SignColor {
     TANGERINE_TARGET("tangerine_target"),
     TOM("tom"),
     YELLOW_BLOSSOM("yellow_blossom"),
+    BLUEHEART("blueheart"),
+    DUSTY("dusty"),
+    GRAPE("grape"),
+    GRASS("grass"),
+    LEMON("lemon"),
+    MINTHEART("mintheart"),
+    MUCKY("mucky"),
+    ORANGEHEART("orangeheart"),
+    PINKHEART("pinkheart"),
+    PURPLEHEART("purpleheart"),
+    SANDY("sandy"),
+    SNOWY("snowy"),
+    VIA("via"),
+    YELLOWHEART("yellowheart"),
 
     ;
 
