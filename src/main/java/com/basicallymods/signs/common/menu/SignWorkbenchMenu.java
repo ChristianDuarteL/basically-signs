@@ -84,7 +84,7 @@ public class SignWorkbenchMenu extends AbstractContainerMenu {
                 ItemStack signItem = SignWorkbenchMenu.this.inputSlot.remove(1);
                 ItemStack dyeItem = SignWorkbenchMenu.this.dyeSlot.remove(1);
 
-                if (!signItem.isEmpty() || !dyeItem.isEmpty()) {
+                if (!signItem.isEmpty() && !dyeItem.isEmpty()) {
                     SignWorkbenchMenu.this.setupResultSlot();
                 }
 
@@ -165,8 +165,9 @@ public class SignWorkbenchMenu extends AbstractContainerMenu {
     public void slotsChanged(Container pInventory) {
         ItemStack signItem = this.inputSlot.getItem();
         ItemStack dyeItem = this.dyeSlot.getItem();
-        if (!signItem.is(this.input.getItem()) && !dyeItem.is(this.dye.getItem())) {
+        if (!signItem.is(this.input.getItem()) || !dyeItem.is(this.dye.getItem())) {
             this.input = signItem.copy();
+            this.dye = dyeItem.copy();
             this.setupRecipeList(pInventory, signItem);
         }
     }
