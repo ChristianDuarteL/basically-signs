@@ -29,11 +29,5 @@ public class Recipes extends RecipeProvider {
 
     @Override
     protected void buildRecipes(Consumer<FinishedRecipe> pWriter) {
-        ModItems.SIGN_ITEMS_BY_SIGN_COLOR.forEach((e, c) -> {
-            SignRecipeBuilder
-                .of(Ingredient.of(ItemTags.SIGNS), Ingredient.of(Items.BLUE_DYE), RecipeCategory.DECORATIONS, c.get())
-                .unlockedBy("has_sign", has(ItemTags.SIGNS))
-                .save(pWriter);
-        });
     }
 }
