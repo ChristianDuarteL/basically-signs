@@ -1,0 +1,10 @@
+{
+  "type": "basically_signs:sign_workbench",
+  "dye": {
+    "item": "minecraft:lime_dye"
+  },
+  "ingredient": {
+    "tag": "minecraft:signs"
+  },
+  "result": "basically_signs:green_blossom_sign"
+}

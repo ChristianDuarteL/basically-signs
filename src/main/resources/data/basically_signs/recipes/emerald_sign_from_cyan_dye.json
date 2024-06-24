@@ -1,0 +1,10 @@
+{
+  "type": "basically_signs:sign_workbench",
+  "dye": {
+    "item": "minecraft:cyan_dye"
+  },
+  "ingredient": {
+    "tag": "minecraft:signs"
+  },
+  "result": "basically_signs:emerald_sign"
+}
