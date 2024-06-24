@@ -21,7 +21,6 @@ public enum SignColor {
     SIENNA("sienna"),
     SLATE_BLUE("slate_blue"),
     SPOOKY_GREEN("spooky_green"),
-    CUCURUCHO("cucurucho"),
     ENAIRA("enaira"),
     NYX("nyx"),
     SCARLET("scarlet"),
