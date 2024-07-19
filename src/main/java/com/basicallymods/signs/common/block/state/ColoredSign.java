@@ -1,7 +1,7 @@
 package com.basicallymods.signs.common.block.state;
 
-import com.basicallymods.signs.common.data.SignColor;
+import com.basicallymods.signs.common.data.ISignColor;
 
 public interface ColoredSign {
-    SignColor getColorSign();
+    ISignColor getColorSign();
 }

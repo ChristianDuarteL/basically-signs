@@ -1,5 +1,6 @@
 package com.basicallymods.signs.data;
 
+import com.basicallymods.signs.api.DataGenerators;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.tags.ItemTagsProvider;
@@ -11,6 +12,7 @@ import org.jetbrains.annotations.Nullable;
 import java.util.concurrent.CompletableFuture;
 
 import static com.basicallymods.signs.BasicallySigns.MOD_ID;
+import static com.basicallymods.signs.BasicallySigns.registerer;
 
 
 public class ItemTags extends ItemTagsProvider {
@@ -21,5 +23,6 @@ public class ItemTags extends ItemTagsProvider {
 
     @Override
     protected void addTags(HolderLookup.@NotNull Provider provider) {
+        DataGenerators.registerItemTags(this::tag, registerer);
     }
 }

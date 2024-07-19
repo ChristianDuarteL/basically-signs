@@ -1,5 +1,8 @@
 package com.basicallymods.signs.data;
 
+import com.basicallymods.signs.BasicallySigns;
+import com.basicallymods.signs.api.DataGenerators;
+import com.basicallymods.signs.api.SignsRegisterer;
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.Iterables;
 import net.minecraft.data.PackOutput;
@@ -24,7 +27,8 @@ import static com.basicallymods.signs.common.registry.ModBlocks.SIGN_WORKBENCH;
 public class BlockLoot extends LootTableProvider{
 
     static final List<LootTableProvider.SubProviderEntry> PROVIDERS = ImmutableList.of(
-        new LootTableProvider.SubProviderEntry(BlockLootProvider::new, LootContextParamSets.BLOCK)
+        new LootTableProvider.SubProviderEntry(BlockLootProvider::new, LootContextParamSets.BLOCK),
+        DataGenerators.getLootProvider(BasicallySigns.registerer)
     );
 
     public BlockLoot(PackOutput pOutput) {
@@ -39,17 +43,12 @@ public class BlockLoot extends LootTableProvider{
 
         @Override
         protected void generate() {
-            SIGN_BLOCKS_BY_COLOR.values().stream().forEach(e -> {
-                dropSelf(e.standing().get());
-                dropSelf(e.wall().get());
-            });
             dropSelf(SIGN_WORKBENCH.get());
         }
 
         @Override
         protected @NotNull Iterable<Block> getKnownBlocks() {
-            return Iterables.concat(SIGN_BLOCKS_BY_COLOR.values().stream().flatMap(e -> Set.of((Block) e.wall().get(),
-                    e.standing().get()).stream())::iterator, List.of(SIGN_WORKBENCH.get()));
+            return List.of(SIGN_WORKBENCH.get());
         }
     }
 }

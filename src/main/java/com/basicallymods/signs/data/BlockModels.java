@@ -1,5 +1,7 @@
 package com.basicallymods.signs.data;
 
+import com.basicallymods.signs.BasicallySigns;
+import com.basicallymods.signs.api.DataGenerators;
 import net.minecraft.data.PackOutput;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.block.Block;
@@ -17,18 +19,6 @@ public class BlockModels extends BlockModelProvider {
 
     @Override
     protected void registerModels() {
-        final ResourceLocation planks_particles = new ResourceLocation(
-                "minecraft", "block/spruce_planks"
-        );
-        SIGN_BLOCKS_BY_COLOR.values().forEach(
-                block -> {
-                    sign(blockName(block.standing().get()), planks_particles);
-                    sign(blockName(block.wall().get()), planks_particles);
-                }
-        );
-    }
-
-    private String blockName(Block block) {
-        return ForgeRegistries.BLOCKS.getKey(block).getPath();
+        DataGenerators.registerBlockModels(this, BasicallySigns.registerer);
     }
 }

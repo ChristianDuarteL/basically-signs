@@ -1,7 +1,7 @@
 package com.basicallymods.signs.client.renderer;
 
 import com.basicallymods.signs.common.block.state.ColoredSign;
-import com.basicallymods.signs.common.data.SignColor;
+import com.basicallymods.signs.common.data.ISignColor;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
 import com.mojang.math.Axis;
@@ -168,16 +168,18 @@ public class ColoredSignRenderer extends SignRenderer
         int i = pSignText.getColor().getTextColor();
         if (i == DyeColor.BLACK.getTextColor() && pSignText.hasGlowingText()) {
             return -988212;
+        } else if(i == DyeColor.WHITE.getTextColor() && !pSignText.hasGlowingText()) {
+            return i;
         } else {
             double d0 = 0.4D;
-            int j = (int)((double) FastColor.ARGB32.red(i) * 0.4D);
-            int k = (int)((double)FastColor.ARGB32.green(i) * 0.4D);
-            int l = (int)((double)FastColor.ARGB32.blue(i) * 0.4D);
+            int j = (int)((double) FastColor.ARGB32.red(i) * d0);
+            int k = (int)((double)FastColor.ARGB32.green(i) * d0);
+            int l = (int)((double)FastColor.ARGB32.blue(i) * d0);
             return FastColor.ARGB32.color(0, j, k, l);
         }
     }
 
-    public static Material getMaterial(SignColor signColor) {
+    public static Material getMaterial(ISignColor signColor) {
         return COLORED_SIGN_MATERIALS.get(signColor);
     }
 }

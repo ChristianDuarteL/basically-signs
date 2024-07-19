@@ -1,5 +1,6 @@
 package com.basicallymods.signs.data;
 
+import com.basicallymods.signs.api.DataGenerators;
 import net.minecraft.data.PackOutput;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.block.Block;
@@ -8,6 +9,7 @@ import net.minecraftforge.client.model.generators.ModelFile;
 import net.minecraftforge.common.data.ExistingFileHelper;
 
 import static com.basicallymods.signs.BasicallySigns.MOD_ID;
+import static com.basicallymods.signs.BasicallySigns.registerer;
 import static com.basicallymods.signs.common.registry.ModBlocks.*;
 
 public class BlockStates extends BlockStateProvider {
@@ -17,15 +19,12 @@ public class BlockStates extends BlockStateProvider {
 
     @Override
     protected void registerStatesAndModels() {
-        SIGN_BLOCKS_BY_COLOR.values().forEach(e -> {
-            simpleBlock(e.standing().get(), existingModel(e.standing().get()));
-            simpleBlock(e.wall().get(), existingModel(e.wall().get()));
-        });
         horizontalBlock(
             SIGN_WORKBENCH.get(),
             existingModel(SIGN_WORKBENCH.get()),
             270
         );
+        DataGenerators.registerBlockStates(this, registerer);
     }
 
     private String blockName(Block block) {

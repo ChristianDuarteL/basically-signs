@@ -1,7 +1,7 @@
 package com.basicallymods.signs.common.block;
 
 import com.basicallymods.signs.common.block.state.ColoredSign;
-import com.basicallymods.signs.common.data.SignColor;
+import com.basicallymods.signs.common.data.ISignColor;
 import com.basicallymods.signs.common.entity.SignBlockEntity;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.entity.LivingEntity;
@@ -16,9 +16,9 @@ import net.minecraft.world.level.block.state.properties.WoodType;
 import javax.annotation.Nullable;
 
 public class StandingSignBlock extends net.minecraft.world.level.block.StandingSignBlock implements ColoredSign {
-    private final SignColor color;
+    private final ISignColor color;
 
-    public StandingSignBlock(SignColor color) {
+    public StandingSignBlock(ISignColor color) {
         super(Properties.copy(Blocks.OAK_SIGN), WoodType.SPRUCE);
         this.color = color;
     }
@@ -29,7 +29,7 @@ public class StandingSignBlock extends net.minecraft.world.level.block.StandingS
     }
 
     @Override
-    public SignColor getColorSign() {
+    public ISignColor getColorSign() {
         return color;
     }
 
@@ -38,9 +38,9 @@ public class StandingSignBlock extends net.minecraft.world.level.block.StandingS
         BlockEntity tileEntity = level.getBlockEntity(pos);
         Block block = state.getBlock();
         if (tileEntity instanceof net.minecraft.world.level.block.entity.SignBlockEntity signEntity && block instanceof ColoredSign sign) {
-            SignColor signColor = sign.getColorSign();
+            ISignColor ISignColor = sign.getColorSign();
             signEntity.updateText((signText) -> {
-                return signText.setColor(signColor.getColor());
+                return signText.setColor(ISignColor.getColor());
             }, true);
         }
     }

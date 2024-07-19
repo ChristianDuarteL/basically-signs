@@ -1,6 +1,6 @@
 package com.basicallymods.signs.common.block;
 import com.basicallymods.signs.common.block.state.ColoredSign;
-import com.basicallymods.signs.common.data.SignColor;
+import com.basicallymods.signs.common.data.ISignColor;
 import com.basicallymods.signs.common.entity.SignBlockEntity;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.entity.LivingEntity;
@@ -15,9 +15,9 @@ import net.minecraft.world.level.block.state.properties.WoodType;
 import javax.annotation.Nullable;
 
 public class WallSignBlock extends net.minecraft.world.level.block.WallSignBlock implements ColoredSign {
-    private final SignColor color;
+    private final ISignColor color;
 
-    public WallSignBlock(SignColor color) {
+    public WallSignBlock(ISignColor color) {
         super(Properties.copy(Blocks.OAK_SIGN), WoodType.SPRUCE);
         this.color = color;
     }
@@ -28,7 +28,7 @@ public class WallSignBlock extends net.minecraft.world.level.block.WallSignBlock
     }
 
     @Override
-    public SignColor getColorSign() {
+    public ISignColor getColorSign() {
         return color;
     }
 

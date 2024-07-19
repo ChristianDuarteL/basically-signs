@@ -1,5 +1,6 @@
 package com.basicallymods.signs.data;
 
+import com.basicallymods.signs.api.DataGenerators;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
 import net.minecraft.world.level.block.StandingSignBlock;
@@ -11,6 +12,7 @@ import javax.annotation.Nullable;
 import java.util.concurrent.CompletableFuture;
 
 import static com.basicallymods.signs.BasicallySigns.MOD_ID;
+import static com.basicallymods.signs.BasicallySigns.registerer;
 import static com.basicallymods.signs.common.registry.ModBlocks.SIGN_BLOCKS_BY_COLOR;
 
 public class BlockTags extends BlockTagsProvider {
@@ -20,19 +22,6 @@ public class BlockTags extends BlockTagsProvider {
 
     @Override
     protected void addTags(HolderLookup.Provider pProvider) {
-        tag(net.minecraft.tags.BlockTags.STANDING_SIGNS).add(
-                SIGN_BLOCKS_BY_COLOR
-                        .values()
-                        .stream()
-                        .map(e -> e.standing().get())
-                        .toArray(StandingSignBlock[]::new)
-        );
-        tag(net.minecraft.tags.BlockTags.WALL_SIGNS).add(
-                SIGN_BLOCKS_BY_COLOR
-                        .values()
-                        .stream()
-                        .map(e -> e.wall().get())
-                        .toArray(WallSignBlock[]::new)
-        );
+        DataGenerators.registerBlockTags(this::tag, registerer);
     }
 }

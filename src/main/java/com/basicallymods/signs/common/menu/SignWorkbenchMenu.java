@@ -242,11 +242,13 @@ public class SignWorkbenchMenu extends AbstractContainerMenu {
                     return ItemStack.EMPTY;
                 }
             } else if (pIndex >= INV_SLOT_START && pIndex < USE_ROW_SLOT_START) {
-                if (!this.moveItemStackTo(itemstack1, USE_ROW_SLOT_START, USE_ROW_SLOT_END, false)) {
+                if (!this.moveItemStackTo(itemstack1, INPUT_SLOT, RESULT_SLOT, false) && !this.moveItemStackTo(itemstack1, USE_ROW_SLOT_START, USE_ROW_SLOT_END, false)) {
                     return ItemStack.EMPTY;
                 }
-            } else if (pIndex >= USE_ROW_SLOT_START && pIndex < USE_ROW_SLOT_END && !this.moveItemStackTo(itemstack1, INV_SLOT_START, INV_SLOT_END, false)) {
-                return ItemStack.EMPTY;
+            } else if (pIndex >= USE_ROW_SLOT_START && pIndex < USE_ROW_SLOT_END) {
+                if (!this.moveItemStackTo(itemstack1, INPUT_SLOT, RESULT_SLOT, false) && !this.moveItemStackTo(itemstack1, INV_SLOT_START, INV_SLOT_END, false)) {
+                    return ItemStack.EMPTY;
+                }
             }
 
             if (itemstack1.isEmpty()) {

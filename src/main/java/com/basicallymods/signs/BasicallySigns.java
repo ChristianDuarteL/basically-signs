@@ -1,7 +1,9 @@
 package com.basicallymods.signs;
 
+import com.basicallymods.signs.api.SignsRegisterer;
 import com.basicallymods.signs.client.renderer.ColoredSignRenderer;
 import com.basicallymods.signs.client.screens.SignWorkbenchScreen;
+import com.basicallymods.signs.common.data.SignColor;
 import com.basicallymods.signs.common.registry.*;
 import com.mojang.logging.LogUtils;
 import net.minecraft.client.gui.screens.MenuScreens;
@@ -26,11 +28,16 @@ import static com.basicallymods.signs.common.registry.ModItems.SIGN_ITEMS_BY_SIG
 @Mod(BasicallySigns.MOD_ID)
 public class BasicallySigns {
     public static final String MOD_ID = "basically_signs";
-    public static final Logger LOGGER = LogUtils.getLogger();
+    public static SignsRegisterer registerer;
 
     public BasicallySigns() {
         IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
 
+        registerer = new SignsRegisterer(MOD_ID, ModBlocks.REGISTRY, ModItems.REGISTRY);
+
+        for (SignColor color : SignColor.values()){
+            registerer.registerBasic(color);
+        }
 
         ModBlockEntities.REGISTRY.register(modEventBus);
         ModBlocks.REGISTRY.register(modEventBus);
@@ -41,21 +48,14 @@ public class BasicallySigns {
         ModRecipeSerializers.REGISTRY.register(modEventBus);
 
         modEventBus.addListener(this::commonSetup);
-        modEventBus.addListener(this::addItemsToTabs);
         MinecraftForge.EVENT_BUS.register(this);
 
         ModLoadingContext.get().registerConfig(ModConfig.Type.COMMON, Config.SPEC);
     }
 
-    private void addItemsToTabs(BuildCreativeModeTabContentsEvent event)
-    {
-        if (event.getTabKey() == CreativeModeTabs.FUNCTIONAL_BLOCKS)
-        {
-            SIGN_ITEMS_BY_SIGN_COLOR.values().forEach(event::accept);
-        }
-    }
     private void commonSetup(final FMLCommonSetupEvent event) {
     }
+
     @SubscribeEvent
     public void onServerStarting(ServerStartingEvent event) { }
 

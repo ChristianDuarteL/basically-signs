@@ -4,6 +4,7 @@ import com.basicallymods.signs.BasicallySigns;
 import com.basicallymods.signs.common.block.SignWorkbenchBlock;
 import com.basicallymods.signs.common.block.StandingSignBlock;
 import com.basicallymods.signs.common.block.WallSignBlock;
+import com.basicallymods.signs.common.data.ISignColor;
 import com.basicallymods.signs.common.data.SignColor;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
@@ -16,32 +17,17 @@ import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.Map;
 import java.util.Properties;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 
 public class ModBlocks {
-    public record SignBlock(RegistryObject<net.minecraft.world.level.block.StandingSignBlock> standing, RegistryObject<net.minecraft.world.level.block.WallSignBlock> wall) { }
+    public record SignBlock(RegistryObject<? extends net.minecraft.world.level.block.StandingSignBlock> standing, RegistryObject<? extends net.minecraft.world.level.block.WallSignBlock> wall) { }
     public static DeferredRegister<Block> REGISTRY = DeferredRegister.create(ForgeRegistries.BLOCKS, BasicallySigns.MOD_ID);
 
-    public static final Map<SignColor, SignBlock> SIGN_BLOCKS_BY_COLOR;
+    public static final Map<ISignColor, SignBlock> SIGN_BLOCKS_BY_COLOR = new HashMap<>();
 
     public static final RegistryObject<SignWorkbenchBlock> SIGN_WORKBENCH = REGISTRY.register("workbench", () -> new SignWorkbenchBlock(BlockBehaviour.Properties.of().instrument(NoteBlockInstrument.BASS).strength(2.5F).sound(SoundType.WOOD).ignitedByLava()));
-
-    static {
-        SIGN_BLOCKS_BY_COLOR = Arrays.stream(SignColor.values()).collect(Collectors.toMap(
-                Function.identity(),
-                (color) -> new SignBlock(
-                        REGISTRY.register(
-                                color.getName() + "_sign",
-                                () -> new StandingSignBlock(color)
-                        ),
-                        REGISTRY.register(
-                                color.getName() + "_wall_sign",
-                                () -> new WallSignBlock(color)
-                        )
-                )
-        ));
-    }
 }

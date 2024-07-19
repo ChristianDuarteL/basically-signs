@@ -20,10 +20,11 @@ modId="${mod_id}" #mandatory
 version="${mod_version}" #mandatory
 # A display name for the mod
 displayName="${mod_name}" #mandatory
+logoFile="logo.png"
 # A URL to query for updates for this mod. See the JSON update specification https://docs.minecraftforge.net/en/latest/misc/updatechecker/
 #updateJSONURL="https://change.me.example.invalid/updates.json" #optional
 # A URL for the "homepage" for this mod, displayed in the mod UI
-#displayURL="https://change.me.to.your.mods.homepage.example.invalid/" #optional
+displayURL="https://basicallymods.com/#signs" #optional
 # A file name (in the root of the mod JAR) containing a logo for display
 #logoFile="basically_signs.png" #optional
 # A text field displayed in the mod UI

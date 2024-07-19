@@ -1,6 +1,0 @@
-{
-  "parent": "minecraft:item/generated",
-  "textures": {
-    "layer0": "basically_signs:item/gooseberries_sign"
-  }
-}
