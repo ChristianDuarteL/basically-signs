@@ -10,22 +10,26 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.entity.BlockEntity;
+import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.WoodType;
 
 import javax.annotation.Nullable;
+import java.util.function.Supplier;
 
 public class StandingSignBlock extends net.minecraft.world.level.block.StandingSignBlock implements ColoredSign {
     private final ISignColor color;
+    private final Supplier<BlockEntityType<SignBlockEntity>> typeSupplier;
 
-    public StandingSignBlock(ISignColor color) {
+    public StandingSignBlock(ISignColor color, Supplier<BlockEntityType<SignBlockEntity>> typeSupplier) {
         super(Properties.copy(Blocks.OAK_SIGN), WoodType.SPRUCE);
         this.color = color;
+        this.typeSupplier = typeSupplier;
     }
 
     @Override
     public BlockEntity newBlockEntity(BlockPos pos, BlockState state) {
-        return new SignBlockEntity(pos, state);
+        return new SignBlockEntity(pos, state, typeSupplier);
     }
 
     @Override

@@ -14,7 +14,6 @@ import java.util.concurrent.CompletableFuture;
 import static com.basicallymods.signs.BasicallySigns.MOD_ID;
 import static com.basicallymods.signs.BasicallySigns.registerer;
 
-
 public class ItemTags extends ItemTagsProvider {
 
     public ItemTags(PackOutput output, CompletableFuture<HolderLookup.Provider> provider, CompletableFuture<TagLookup<Block>> blockTagProvider, @Nullable ExistingFileHelper existingFileHelper) {

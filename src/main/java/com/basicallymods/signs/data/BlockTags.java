@@ -3,8 +3,6 @@ package com.basicallymods.signs.data;
 import com.basicallymods.signs.api.DataGenerators;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
-import net.minecraft.world.level.block.StandingSignBlock;
-import net.minecraft.world.level.block.WallSignBlock;
 import net.minecraftforge.common.data.BlockTagsProvider;
 import net.minecraftforge.common.data.ExistingFileHelper;
 
@@ -13,7 +11,6 @@ import java.util.concurrent.CompletableFuture;
 
 import static com.basicallymods.signs.BasicallySigns.MOD_ID;
 import static com.basicallymods.signs.BasicallySigns.registerer;
-import static com.basicallymods.signs.common.registry.ModBlocks.SIGN_BLOCKS_BY_COLOR;
 
 public class BlockTags extends BlockTagsProvider {
     public BlockTags(PackOutput output, CompletableFuture<HolderLookup.Provider> lookupProvider, @Nullable ExistingFileHelper existingFileHelper) {

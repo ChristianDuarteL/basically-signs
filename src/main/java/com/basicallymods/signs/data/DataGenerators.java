@@ -29,7 +29,6 @@ public class DataGenerators {
         generator.addProvider(event.includeServer(), new Recipes(output));
 
         generator.addProvider(event.includeClient(), new ItemModels(output, helper));
-        //generator.addProvider(event.includeClient(), new SignItemModels(output, helper));
         generator.addProvider(event.includeClient(), new BlockModels(output, helper));
         generator.addProvider(event.includeClient(), new BlockStates(output, helper));
 

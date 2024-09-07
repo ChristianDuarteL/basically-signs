@@ -2,18 +2,12 @@ package com.basicallymods.signs.data;
 
 import com.basicallymods.signs.BasicallySigns;
 import com.basicallymods.signs.api.DataGenerators;
-import com.basicallymods.signs.api.SignsRegisterer;
 import com.google.common.collect.ImmutableList;
-import com.google.common.collect.Iterables;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.loot.BlockLootSubProvider;
 import net.minecraft.data.loot.LootTableProvider;
-import net.minecraft.world.flag.FeatureFlagSet;
 import net.minecraft.world.flag.FeatureFlags;
-import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.storage.loot.LootContext;
-import net.minecraft.world.level.storage.loot.parameters.LootContextParamSet;
 import net.minecraft.world.level.storage.loot.parameters.LootContextParamSets;
 import org.jetbrains.annotations.NotNull;
 
@@ -21,7 +15,6 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Set;
 
-import static com.basicallymods.signs.common.registry.ModBlocks.SIGN_BLOCKS_BY_COLOR;
 import static com.basicallymods.signs.common.registry.ModBlocks.SIGN_WORKBENCH;
 
 public class BlockLoot extends LootTableProvider{

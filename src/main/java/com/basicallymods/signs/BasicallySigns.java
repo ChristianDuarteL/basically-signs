@@ -23,21 +23,21 @@ import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import org.slf4j.Logger;
 
-import static com.basicallymods.signs.common.registry.ModItems.SIGN_ITEMS_BY_SIGN_COLOR;
-
 @Mod(BasicallySigns.MOD_ID)
 public class BasicallySigns {
     public static final String MOD_ID = "basically_signs";
     public static SignsRegisterer registerer;
 
-    public BasicallySigns() {
-        IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
-
-        registerer = new SignsRegisterer(MOD_ID, ModBlocks.REGISTRY, ModItems.REGISTRY);
+    static {
+        registerer = new SignsRegisterer(MOD_ID, ModBlocks.REGISTRY, ModItems.REGISTRY, ModBlockEntities.REGISTRY);
 
         for (SignColor color : SignColor.values()){
             registerer.registerBasic(color);
         }
+    }
+
+    public BasicallySigns() {
+        IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
 
         ModBlockEntities.REGISTRY.register(modEventBus);
         ModBlocks.REGISTRY.register(modEventBus);

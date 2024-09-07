@@ -1,13 +1,11 @@
 package com.basicallymods.signs.common.data;
 
-import com.basicallymods.signs.common.registry.ModItems;
 import com.basicallymods.signs.common.registry.ModRecipeSerializers;
 import com.basicallymods.signs.common.registry.ModRecipeTypes;
 import com.google.gson.JsonObject;
 import net.minecraft.core.NonNullList;
 import net.minecraft.core.RegistryAccess;
 import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.data.recipes.FinishedRecipe;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.GsonHelper;
@@ -15,9 +13,9 @@ import net.minecraft.world.Container;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.*;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.Blocks;
 import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+
+import static com.basicallymods.signs.BasicallySigns.registerer;
 
 public class SignRecipe implements Recipe<Container> {
     protected final Ingredient ingredient;
@@ -83,7 +81,7 @@ public class SignRecipe implements Recipe<Container> {
     }
 
     public @NotNull ItemStack getToastSymbol() {
-        return new ItemStack(ModItems.SIGN_ITEMS_BY_SIGN_COLOR.get(SignColor.AMBER).get());
+        return new ItemStack(registerer.SIGN_ITEMS_BY_SIGN_COLOR.get(SignColor.AMBER).get());
     }
 
     public static final Serializer<SignRecipe> SIGN_RECIPE_SERIALIZER = new Serializer<>(SignRecipe::new);

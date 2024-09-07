@@ -17,4 +17,8 @@ public interface ISignColor {
     default String itemName() {
         return this.getName() + "_sign";
     }
+
+    default int getYOffset(){
+        return -1;
+    }
 }

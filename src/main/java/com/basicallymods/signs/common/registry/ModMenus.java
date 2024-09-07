@@ -4,7 +4,6 @@ import com.basicallymods.signs.BasicallySigns;
 import com.basicallymods.signs.common.menu.SignWorkbenchMenu;
 import net.minecraft.world.flag.FeatureFlagSet;
 import net.minecraft.world.inventory.MenuType;
-import net.minecraft.world.item.Item;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;

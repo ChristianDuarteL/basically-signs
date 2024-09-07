@@ -2,7 +2,6 @@ package com.basicallymods.signs.common.registry;
 
 import com.basicallymods.signs.BasicallySigns;
 import com.basicallymods.signs.common.data.SignRecipe;
-import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.item.crafting.Recipe;
 import net.minecraft.world.item.crafting.RecipeType;
 import net.minecraftforge.registries.DeferredRegister;

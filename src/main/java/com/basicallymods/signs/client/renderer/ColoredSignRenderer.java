@@ -64,9 +64,16 @@ public class ColoredSignRenderer extends SignRenderer
         pPoseStack.pushPose();
         this.translateSign(pPoseStack, -pSignBlock.getYRotationDegrees(pState), pState);
         this.renderSign(pPoseStack, pBuffer, pPackedLight, pPackedOverlay, pWoodType, pModel, pSignEntity);
-        this.renderSignText(pSignEntity.getBlockPos(), pSignEntity.getFrontText(), pPoseStack, pBuffer, pPackedLight, pSignEntity.getTextLineHeight(), pSignEntity.getMaxTextLineWidth(), true);
-        this.renderSignText(pSignEntity.getBlockPos(), pSignEntity.getBackText(), pPoseStack, pBuffer, pPackedLight, pSignEntity.getTextLineHeight(), pSignEntity.getMaxTextLineWidth(), false);
+        this.renderSignText(pSignEntity.getBlockPos(), pSignEntity.getFrontText(), pPoseStack, pBuffer, pPackedLight, pSignEntity.getTextLineHeight(), pSignEntity.getMaxTextLineWidth(), true, getCustomOffset(pSignEntity));
+        this.renderSignText(pSignEntity.getBlockPos(), pSignEntity.getBackText(), pPoseStack, pBuffer, pPackedLight, pSignEntity.getTextLineHeight(), pSignEntity.getMaxTextLineWidth(), false, getCustomOffset(pSignEntity));
         pPoseStack.popPose();
+    }
+
+    public int getCustomOffset(SignBlockEntity entity) {
+        if(entity.getBlockState().getBlock() instanceof ColoredSign sign){
+            return sign.getColorSign().getYOffset();
+        }
+        return 0;
     }
 
     void translateSign(PoseStack pPoseStack, float pYRot, BlockState pState) {
@@ -100,11 +107,11 @@ public class ColoredSignRenderer extends SignRenderer
         return Sheets.getSignMaterial(pWoodType);
     }
 
-    void renderSignText(BlockPos pPos, SignText pText, PoseStack pPoseStack, MultiBufferSource pBuffer, int pPackedLight, int pLineHeight, int pMaxWidth, boolean pIsFrontText) {
+    void renderSignText(BlockPos pPos, SignText pText, PoseStack pPoseStack, MultiBufferSource pBuffer, int pPackedLight, int pLineHeight, int pMaxWidth, boolean pIsFrontText, int yOffset) {
         pPoseStack.pushPose();
         this.translateSignText(pPoseStack, pIsFrontText, this.getTextOffset());
         int i = getDarkColor(pText);
-        int j = 4 * pLineHeight / 2;
+        int j = 2 * pLineHeight + yOffset;
         FormattedCharSequence[] aformattedcharsequence = pText.getRenderMessages(Minecraft.getInstance().isTextFilteringEnabled(), (p_277227_) -> {
             List<FormattedCharSequence> list = this.font.split(p_277227_, pMaxWidth);
             return list.isEmpty() ? FormattedCharSequence.EMPTY : list.get(0);
@@ -125,10 +132,11 @@ public class ColoredSignRenderer extends SignRenderer
         for(int i1 = 0; i1 < 4; ++i1) {
             FormattedCharSequence formattedcharsequence = aformattedcharsequence[i1];
             float f = (float)(-this.font.width(formattedcharsequence) / 2);
+            float y = (float)(i1 * pLineHeight - j);
             if (flag) {
-                this.font.drawInBatch8xOutline(formattedcharsequence, f, (float)(i1 * pLineHeight - j), k, i, pPoseStack.last().pose(), pBuffer, l);
+                this.font.drawInBatch8xOutline(formattedcharsequence, f, y, k, i, pPoseStack.last().pose(), pBuffer, l);
             } else {
-                this.font.drawInBatch(formattedcharsequence, f, (float)(i1 * pLineHeight - j), k, false, pPoseStack.last().pose(), pBuffer, Font.DisplayMode.POLYGON_OFFSET, 0, l);
+                this.font.drawInBatch(formattedcharsequence, f, y, k, false, pPoseStack.last().pose(), pBuffer, Font.DisplayMode.POLYGON_OFFSET, 0, l);
             }
         }
 
