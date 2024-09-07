@@ -1,0 +1,10 @@
+{
+  "type": "basically_signs:sign_workbench",
+  "dye": {
+    "item": "minecraft:light_blue_dye"
+  },
+  "ingredient": {
+    "tag": "minecraft:signs"
+  },
+  "result": "basically_signs:ice_blue_sign"
+}
