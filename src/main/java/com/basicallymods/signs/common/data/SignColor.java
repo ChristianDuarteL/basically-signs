@@ -59,7 +59,21 @@ public enum SignColor implements ISignColor {
     WALT("walt"),
     YELLOW_BLOSSOM("yellow_blossom"),
     YELLOWHEART("yellowheart"),
-
+    PASTEL_YELLOW("pastel_yellow"),
+    PASTEL_GREEN("pastel_green"),
+    PASTEL_ORANGE("pastel_orange"),
+    PASTEL_PINK("pastel_pink"),
+    PASTEL_PURPLE("pastel_purple"),
+    PASTEL_TEAL("pastel_teal"),
+    SWIRL_TEAL("swirl_teal", DyeColor.WHITE),
+    SWIRL_CYAN("swirl_cyan", DyeColor.WHITE),
+    SWIRL_MAROON("swirl_maroon", DyeColor.WHITE),
+    SWIRL_OLIVE("swirl_olive", DyeColor.WHITE),
+    SWIRL_PINK("swirl_pink"),
+    SWIRL_RED("swirl_red", DyeColor.WHITE),
+    SWIRL_WALNUT("swirl_walnut", DyeColor.WHITE),
+    SWIRL_PURPLE("swirl_purple"),
+    RACCOON("raccoon"),
     ;
 
     private final String name;
