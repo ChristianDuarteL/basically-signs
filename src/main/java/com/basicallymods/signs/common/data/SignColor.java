@@ -74,6 +74,10 @@ public enum SignColor implements ISignColor {
     SWIRL_WALNUT("swirl_walnut", DyeColor.WHITE),
     SWIRL_PURPLE("swirl_purple"),
     RACCOON("raccoon"),
+    HAZEL("hazel"),
+    JAIME("jaime"),
+    MOON("moon"),
+    PICTURE("picture")
     ;
 
     private final String name;

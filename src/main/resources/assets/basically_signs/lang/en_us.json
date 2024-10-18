@@ -68,5 +68,10 @@
     "block.basically_signs.swirl_red_sign": "Swirl Red Sign",
     "block.basically_signs.swirl_walnut_sign": "Swirl Walnut Sign",
     "block.basically_signs.swirl_purple_sign": "Swirl Purple Sign",
-    "block.basically_signs.raccoon_sign": ""
+    "block.basically_signs.raccoon_sign": "Raccoon Sign",
+    "block.basically_signs.hazel_sign": "Lunar Sign",
+    "block.basically_signs.jaime_sign": "Metallic Sign",
+    "block.basically_signs.moon_sign": "Garden Sign",
+    "block.basically_signs.picture_sign": "Tidal Sign",
+    "block.basically_signs.royal_blossom_sign": "Royal Blossom Sign"
 }
