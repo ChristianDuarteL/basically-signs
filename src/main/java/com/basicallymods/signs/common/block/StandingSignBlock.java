@@ -29,7 +29,7 @@ public class StandingSignBlock extends net.minecraft.world.level.block.StandingS
 
     @Override
     public BlockEntity newBlockEntity(BlockPos pos, BlockState state) {
-        return new SignBlockEntity(pos, state, typeSupplier);
+        return new SignBlockEntity(pos, state, typeSupplier.get());
     }
 
     @Override

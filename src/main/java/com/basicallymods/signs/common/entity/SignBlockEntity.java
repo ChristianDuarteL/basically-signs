@@ -10,19 +10,11 @@ import java.util.function.Supplier;
 
 public class SignBlockEntity extends net.minecraft.world.level.block.entity.SignBlockEntity {
 
-    public static BlockEntityType.BlockEntitySupplier<SignBlockEntity> make (Supplier<BlockEntityType<SignBlockEntity>> typeSupplier) {
-        return (a, b) -> new SignBlockEntity(a, b, typeSupplier);
+    public static BlockEntityType.BlockEntitySupplier<SignBlockEntity> make (Supplier<BlockEntityType<SignBlockEntity>> type) {
+        return (a, b) -> new SignBlockEntity(a, b, type.get());
     }
 
-    final Supplier<BlockEntityType<SignBlockEntity>> typeSupplier;
-
-    public SignBlockEntity(BlockPos pPos, BlockState pBlockState, Supplier<BlockEntityType<SignBlockEntity>> typeSupplier) {
-        super(pPos, pBlockState);
-        this.typeSupplier = typeSupplier;
-    }
-
-    @Override
-    public BlockEntityType<?> getType() {
-        return typeSupplier.get();
+    public SignBlockEntity(BlockPos pPos, BlockState pBlockState, BlockEntityType<SignBlockEntity> type) {
+        super(type, pPos, pBlockState);
     }
 }
