@@ -77,8 +77,35 @@ public enum SignColor implements ISignColor {
     HAZEL("hazel"),
     JAIME("jaime"),
     MOON("moon"),
-    PICTURE("picture")
-    ;
+    PICTURE("picture"),
+    ASPARAGUS("asparagus"),
+    BLUE_ENGRAVED("blue_engraved", DyeColor.WHITE),
+    BLUSH("blush"),
+    CANTALOUPE("cantaloupe"),
+    CHESTNUT("chestnut"),
+    DREAM("dream"),
+    DRIPSTONE("dripstone", DyeColor.WHITE),
+    FIREBALL("fireball"),
+    FLAMINGO("flamingo"),
+    GOLDENROD("goldenrod"),
+    GREEN_ENGRAVED("green_engraved"),
+    HONEYDEW("honeydew"),
+    ICICLE("icicle"),
+    INDIGO("indigo", DyeColor.WHITE),
+    IVORY_ENGRAVED("ivory_engraved"),
+    KIWI("kiwi"),
+    PUDDLE("puddle"),
+    PURPLE_ENGRAVED("purple_engraved", DyeColor.WHITE),
+    RED_ENGRAVED("red_engraved"),
+    RUBY("ruby", DyeColor.WHITE),
+    SAPPHIRE("sapphire", DyeColor.WHITE),
+    SUNSHINE("sunshine"),
+    TIGER("tiger", DyeColor.WHITE),
+    TURQUOISE("turquoise"),
+    UNICORN("unicorn"),
+    VAPORWAVE("vaporwave", DyeColor.WHITE),
+    VINE("vine"),
+    WATERMELON("watermelon");
 
     private final String name;
     private final DyeColor color;
